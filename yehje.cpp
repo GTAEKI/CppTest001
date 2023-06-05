@@ -1,25 +1,18 @@
-#include <iostream>
-#include <time.h> //시간
-#include <stdlib.h> //rand,srand
-#include <unistd.h> // <windows.h> 대체
+// 포인터 공부
+
+#include<iostream>
+
+void AddOne(int localNumber1, int localNumber2);
 
 int main(){
-    setbuf(stdout, NULL); // 버퍼링 비활성화
+    int mainNumber1 = 0;
+    int mainNumber2 = 0;
 
-    int dice = 0;
-    srand(time(NULL));
+    AddOne(mainNumber1,mainNumber2);
+    printf("number의 상태 [1] = %d, [2] = %d \n\n", mainNumber1,mainNumber2);
+}
 
-    printf("주사위의 숫자는 : ");
-
-    getchar();
-
-    
-
-    for(int count = 0; count < 3; count++){
-        sleep(1);
-        dice = rand()%6+1;
-        printf("%d ",dice);
-
-    }
-    printf("\n");
+void AddOne(int localNumber1, int localNumber2){
+    localNumber1 += 1;
+    localNumber2 += 1;
 }

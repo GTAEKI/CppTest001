@@ -3,12 +3,15 @@
         {
             "type": "cppbuild",
             "label": "C/C++: clang++ 활성 파일 빌드",
-            "command": "/usr/bin/clang++",
+            "command": "/usr/bin/g++",
             "args": [
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-g",
                 "${file}",
+                "-L",
+                "/opt/homebrew/opt/ncurses",
+                "-lncurses",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
