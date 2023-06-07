@@ -1,92 +1,177 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
+
+void SuffleCard();
+void SuffleMark();
+void SuffleOnce(char* a,char* b);
 
 using namespace std;
-
-// void Description001();
-// void Description002();
-// void mission();
-void Swap(char firstChar, char secondChar);
-void Swap2(char* firstChar, char* secondChar);
-void Description003();
-void shuffle();
-void ShuffleOnce(int* firstNumber, int* secondNumber);
+const int SUFFLE_COUNT = 300;
+// 트럼프 카 1장을 뽑아서 출력하는 프로그램 만들기.
+// A,2,3,4,5,6,7,8,9,10,J,Q,K;
+// 2차원 행렬
 
 int main()
 {
-    shuffle();
+    srand(time(NULL));
+    char a;
+
+    printf("카드뽑기입니다. \n");
+
+
+    while(1)
+    {
+        cin >> a;
+        SuffleCard();
+        SuffleMark();
+    }
+    
 }
 
-// void Description003()
-// {
-//     //포인터 직접 쳐보기
-//     int number = 100;
-//     int* ptrNumber = &number;
+void SuffleCard()
+{
+    char cardsNumber[13] = {'A','2','3','4','5','6','7','8','9','t','J','Q','K'};
 
-//     printf("number 변수의 주소는 : %p, %x / 할당된 값은 : %d \n",&number, &number, number);
-//     printf("ptrNumber 변수의 주소는 : %p, %x / 할당된 값은 %p / 역참조한 값: %d \n",&ptrNumber,&ptrNumber,ptrNumber,*ptrNumber);
+    for(int i = 0; i<SUFFLE_COUNT;i++)
+    {
+        int number1 = rand()%13;
+        int number2 = rand()%13;
+        SuffleOnce(&cardsNumber[number1],&cardsNumber[number2]);
+    }
+    if(cardsNumber[3]=='t')
+    {
+        printf("10 /");
+    }
+    else
+    {
+    printf("%c /",cardsNumber[3]);
+    }
+}
+
+void SuffleMark()
+{
+    char cardPatterns[4] = {'S','C','H','D'};
+    
+    for(int i = 0; i<SUFFLE_COUNT;i++)
+    {
+        int number1 = rand()%4;
+        int number2 = rand()%4;
+        SuffleOnce(&cardPatterns[number1],&cardPatterns[number2]);
+    }
+    if(cardPatterns[3]=='S')
+    {
+        printf("♠︎ \n");
+    }
+    else if(cardPatterns[3]=='C')
+    {
+        printf("♣︎ \n");
+    }
+    else if(cardPatterns[3]=='H')
+    {
+        printf("♥︎ \n");
+    }
+    else if(cardPatterns[3]=='D')
+    {
+        printf("♦︎ \n");
+    }
+}
+
+void SuffleOnce(char* a,char* b)
+{
+    char temp = '0';
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// // void Description001();
+// // void Description002();
+// // void mission();
+// void Swap(char firstChar, char secondChar);
+// void Swap2(char* firstChar, char* secondChar);
+// void Description003();
+// void shuffle();
+// void ShuffleOnce(int* firstNumber, int* secondNumber);
+
+
+// int main()
+// {
+//     setbuf(stdout, NULL);
+//     shuffle();
 // }
 
-void shuffle()
-{
-    //배열의 선언과 초기화
-    int numbers[10] = {0,};
-    for(int i = 0; i< 10; i++)
-    {
-        numbers[i] = i+1;
-    }
+// // void Description003()
+// // {
+// //     //포인터 직접 쳐보기
+// //     int number = 100;
+// //     int* ptrNumber = &number;
 
-    //배열의 출력
-    printf("Shuffle 이전 \n");
-    for(int i=0; i<10; i++)
-    {
-        printf("%d ", numbers[i]);
-    }
-    printf("\n\n");
-    srand(time(NULL));
+// //     printf("number 변수의 주소는 : %p, %x / 할당된 값은 : %d \n",&number, &number, number);
+// //     printf("ptrNumber 변수의 주소는 : %p, %x / 할당된 값은 %p / 역참조한 값: %d \n",&ptrNumber,&ptrNumber,ptrNumber,*ptrNumber);
+// // }
+
+// void shuffle()
+// {
+//     //배열의 선언과 초기화
+//     int numbers[45] = {0,};
+//     for(int i = 0; i< 45; i++)
+//     {
+//         numbers[i] = i+1;
+//     }
+
+//     //배열의 출력
+//     printf("Shuffle 이전 \n");
+//     for(int i=0; i<45; i++)
+//     {
+//         printf("%d ", numbers[i]);
+//     }
+//     printf("\n\n");
+//     srand(time(NULL));
+//     const int SHUFFLE_COUNT = 800;
+//     //셔플 로직
     
-    //셔플 로직
-    
-    for(int i=0;i<10;i++)
-    {
-        int randomIndex1 = rand() % 10;
-        int randomIndex2 = rand() % 10;
-        ShuffleOnce(&numbers[randomIndex1],&numbers[randomIndex2]);
-    }
-    //셔플 후 배열의 출력
-    printf("Shuffle 이후 \n");
-    for(int i=0; i<10; i++)
-    {
-        printf("%d ", numbers[i]);
-    }
-    printf("\n\n");
-}
+//     for(int i=0;i<SHUFFLE_COUNT;i++)
+//     {
+//         int randomIndex1 = rand() % 10;
+//         int randomIndex2 = rand() % 10;
+//         ShuffleOnce(&numbers[randomIndex1],&numbers[randomIndex2]);
+//     }
+//     //셔플 후 배열의 출력
+//     printf("Shuffle 이후 \n");
+//     for(int i=0; i<6; i++)
+//     {
+//         sleep(1);
+//         printf("%d ", numbers[i]);
+//     }
+//     printf("\n\n");
+// }
 
-void ShuffleOnce(int* firstNumber, int* secondNumber)
-{
-    int temp = -1;
-    temp = *firstNumber;
-    *firstNumber = *secondNumber;
-    *secondNumber = temp;
-}//ShuffleOnce
+// void ShuffleOnce(int* firstNumber, int* secondNumber)
+// {
+//     int temp = -1;
+//     temp = *firstNumber;
+//     *firstNumber = *secondNumber;
+//     *secondNumber = temp;
+// }//ShuffleOnce
 
-void Swap(char firstChar, char secondChar)
-{
-    char temp = '\0';
+// void Swap(char firstChar, char secondChar)
+// {
+//     char temp = '\0';
 
-    temp = firstChar;
-    firstChar = secondChar;
-    secondChar = temp;
-}
-void Swap2(char* firstChar, char* secondChar)
-{
-    char temp = '\0';
+//     temp = firstChar;
+//     firstChar = secondChar;
+//     secondChar = temp;
+// }
+// void Swap2(char* firstChar, char* secondChar)
+// {
+//     char temp = '\0';
 
-    temp = *firstChar;
-    *firstChar = *secondChar;
-    *secondChar = temp;
-}
+//     temp = *firstChar;
+//     *firstChar = *secondChar;
+//     *secondChar = temp;
+// }
 
 //문자열을 입력받아서 대문자 - 소문자 - 대문자 - 소문자 순으로 수정해서 출력하는 프로그램 (easy)
 //위의 프로그램을 수정해서 거꾸로 뒤집어서 출력하는 프로그램 작성 (normal)
