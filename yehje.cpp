@@ -1,362 +1,243 @@
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
-#include <unistd.h>
-
-void SuffleCard();
-void SuffleMark();
-void SuffleOnce(char* a,char* b);
-
-using namespace std;
-const int SUFFLE_COUNT = 300;
-// 트럼프 카 1장을 뽑아서 출력하는 프로그램 만들기.
-// A,2,3,4,5,6,7,8,9,10,J,Q,K;
-// 2차원 행렬
 
 int main()
 {
-    srand(time(NULL));
-    char a;
-
-    printf("카드뽑기입니다. \n");
-
-
-    while(1)
-    {
-        cin >> a;
-        SuffleCard();
-        SuffleMark();
-    }
     
 }
 
-void SuffleCard()
-{
-    char cardsNumber[13] = {'A','2','3','4','5','6','7','8','9','t','J','Q','K'};
 
-    for(int i = 0; i<SUFFLE_COUNT;i++)
+
+////////////정렬 공부하기
+//삽입정렬
+/*
+#include <iostream>
+
+void bubbleSort(int* ptr, int sortSize);
+void swap(int*a,int*b);
+void insertSort(int* ptr, int sortSize);
+
+
+int main()
+{
+    int sort1[5]= {99,59,36,21,17};
+    int sortSize = sizeof(sort1)/sizeof(int);
+
+    insertSort(sort1,sortSize);
+
+    for(int i = 0; i < sortSize; i++)
     {
-        int number1 = rand()%13;
-        int number2 = rand()%13;
-        SuffleOnce(&cardsNumber[number1],&cardsNumber[number2]);
+        printf("%d ",sort1[i]);
     }
-    if(cardsNumber[3]=='t')
+    printf("\n");
+}
+
+void insertSort(int* ptr, int sortSize)
+{
+    for(int i = 0; i < sortSize-1; i++)
     {
-        printf("10 /");
-    }
-    else
-    {
-    printf("%c /",cardsNumber[3]);
+        //for(int i = 0; i < sortSize-j; i++)
+        {
+            if(*(ptr+i) > *(ptr+i+1))
+            {
+                bubbleSort(ptr,i+2);
+            }
+        }
     }
 }
 
-void SuffleMark()
+void bubbleSort(int* ptr, int sortSize)
 {
-    char cardPatterns[4] = {'S','C','H','D'};
-    
-    for(int i = 0; i<SUFFLE_COUNT;i++)
+    for(int j = 1; j < sortSize; j++)
     {
-        int number1 = rand()%4;
-        int number2 = rand()%4;
-        SuffleOnce(&cardPatterns[number1],&cardPatterns[number2]);
-    }
-    if(cardPatterns[3]=='S')
-    {
-        printf("♠︎ \n");
-    }
-    else if(cardPatterns[3]=='C')
-    {
-        printf("♣︎ \n");
-    }
-    else if(cardPatterns[3]=='H')
-    {
-        printf("♥︎ \n");
-    }
-    else if(cardPatterns[3]=='D')
-    {
-        printf("♦︎ \n");
+        for(int i = sortSize-1; i > 0; i--)
+        {
+            if(*(ptr+i) < *(ptr+i-1))
+            {
+                swap(ptr+i,ptr+i-1);
+            }
+        }
     }
 }
 
-void SuffleOnce(char* a,char* b)
+void swap(int*a,int*b)
 {
-    char temp = '0';
+    int temp = 0;
     temp = *a;
     *a = *b;
     *b = temp;
 }
-
-// // void Description001();
-// // void Description002();
-// // void mission();
-// void Swap(char firstChar, char secondChar);
-// void Swap2(char* firstChar, char* secondChar);
-// void Description003();
-// void shuffle();
-// void ShuffleOnce(int* firstNumber, int* secondNumber);
+*/
 
 
-// int main()
-// {
-//     setbuf(stdout, NULL);
-//     shuffle();
-// }
 
-// // void Description003()
-// // {
-// //     //포인터 직접 쳐보기
-// //     int number = 100;
-// //     int* ptrNumber = &number;
 
-// //     printf("number 변수의 주소는 : %p, %x / 할당된 값은 : %d \n",&number, &number, number);
-// //     printf("ptrNumber 변수의 주소는 : %p, %x / 할당된 값은 %p / 역참조한 값: %d \n",&ptrNumber,&ptrNumber,ptrNumber,*ptrNumber);
-// // }
-
-// void shuffle()
-// {
-//     //배열의 선언과 초기화
-//     int numbers[45] = {0,};
-//     for(int i = 0; i< 45; i++)
-//     {
-//         numbers[i] = i+1;
-//     }
-
-//     //배열의 출력
-//     printf("Shuffle 이전 \n");
-//     for(int i=0; i<45; i++)
-//     {
-//         printf("%d ", numbers[i]);
-//     }
-//     printf("\n\n");
-//     srand(time(NULL));
-//     const int SHUFFLE_COUNT = 800;
-//     //셔플 로직
-    
-//     for(int i=0;i<SHUFFLE_COUNT;i++)
-//     {
-//         int randomIndex1 = rand() % 10;
-//         int randomIndex2 = rand() % 10;
-//         ShuffleOnce(&numbers[randomIndex1],&numbers[randomIndex2]);
-//     }
-//     //셔플 후 배열의 출력
-//     printf("Shuffle 이후 \n");
-//     for(int i=0; i<6; i++)
-//     {
-//         sleep(1);
-//         printf("%d ", numbers[i]);
-//     }
-//     printf("\n\n");
-// }
-
-// void ShuffleOnce(int* firstNumber, int* secondNumber)
-// {
-//     int temp = -1;
-//     temp = *firstNumber;
-//     *firstNumber = *secondNumber;
-//     *secondNumber = temp;
-// }//ShuffleOnce
-
-// void Swap(char firstChar, char secondChar)
-// {
-//     char temp = '\0';
-
-//     temp = firstChar;
-//     firstChar = secondChar;
-//     secondChar = temp;
-// }
-// void Swap2(char* firstChar, char* secondChar)
-// {
-//     char temp = '\0';
-
-//     temp = *firstChar;
-//     *firstChar = *secondChar;
-//     *secondChar = temp;
-// }
-
-//문자열을 입력받아서 대문자 - 소문자 - 대문자 - 소문자 순으로 수정해서 출력하는 프로그램 (easy)
-//위의 프로그램을 수정해서 거꾸로 뒤집어서 출력하는 프로그램 작성 (normal)
-
-// 오류 : 초기화를 안시켰을때 쓰레기값 발생, 앞에서 선언안해줬을때, main에서 호출 안해준 경우
-// sizeof()를 하게되면 배열 전체크기가 반환된다.
-// 오류 : %s를 통해 printf해줄경우 마지막에 Null값이 들어있어서 -1처리 해줘야 한다.
-
+//버블정렬
 /*
-void mission()
+#include <iostream>
+
+void bubbleSort(int* ptr, int sortSize);
+void swap(int*a,int*b);
+
+
+int main()
 {
-    char str[300] = {0};
-    char str2[300] ={0};
-    bool t= true;
+    int sort1[5]= {99,59,36,21,17};
 
-    cin >> str;
+    int sortSize = sizeof(sort1)/sizeof(int);
+    bubbleSort(sort1,sortSize);
 
-    for(int i = 0; i < sizeof(str); i++)
+    for(int i = 0; i < sortSize; i++)
     {
-        int b;
-        b = str[i];
+        printf("%d ",sort1[i]);
+    }
+    printf("\n");
+}
 
-        if(t == true)
+void bubbleSort(int* ptr, int sortSize)
+{
+    for(int j = 1; j < sortSize; j++)
+    {
+        for(int i = 0; i < sortSize-j; i++)
         {
-            if((i%2)==0)
+            if(*(ptr+i) > *(ptr+i+1))
             {
-                if(b >= 65 && b <= 90)
-                {
-                    str[i] = b;
-                }
-                    else if(b >= 97 && b <= 122)
-                {
-                    b = b-32;
-                    str[i] = b;
-                }
-            }
-            else if((i%2)==1)
-            {
-                if(b >= 65 && b <= 90)
-                {
-                    b = b+32;
-                    str[i] = b;
-                }
-                    else if(b >= 97 && b <= 122)
-                {
-                    str[i] = b;
-                }
+                swap(ptr+i,ptr+i+1);
             }
         }
-        else if(t == false)
-        {
-            if((i%2)==0)
-            {
-                if(b >= 65 && b <= 90)
-                {
-                    b = b+32;
-                    str[i] = b;
-                }
-                    else if(b >= 97 && b <= 122)
-                {
-                    str[i] = b;
-                }
-            }
-            else if((i%2)==1)
-            {
-                if(b >= 65 && b <= 90)
-                {
-                    str[i] = b;
-                }
-                    else if(b >= 97 && b <= 122)
-                {
-                    b = b-32;
-                    str[i] = b;
-                }
-            }
-        }else
-        {
-            str[i]= NULL;
-        }
+    }
+}
+void swap(int*a,int*b)
+{
+    int temp = 0;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+*/
+//버블정렬
 
-        if(((b >= 65 && b <= 90)||(b >= 97 && b <= 122))==0)
-        {   
-            t = !t;
+
+//선택정렬
+/*
+#include <iostream>
+using namespace std;
+
+void swap2(int* a,int* b);
+
+int main()
+{
+     int sort1[5] = {99,21,36,59,17};
+    // int sort1[5];
+
+     int sortSize = sizeof(sort1)/sizeof(int);
+
+    // for(int i = 0; i < sortSize; i++)
+    // {
+    //     cin >> sort1[i];
+    // }
+
+    for(int i = 0; i < sortSize; i++)
+    {
+        for(int j = i; j < sortSize; j++)
+        {
+            if(sort1[i]>sort1[j])
+            {
+                swap2(&sort1[i],&sort1[j]);
+            }
         }
     }
 
-
-    cout << str << endl;
-    //cout << sizeof(str); // 배열 크기가출력된다.(size of)
-
-    int d = sizeof(str)-1;
-    int f = 0;
-
-    while(d>=0)
+    for(int i = 0; i < sortSize; i++)
     {
-        if(str[d]!=NULL)
-        {
-            str2[f] = str[d];
-            printf("%c",str2[f]);
-            f++;
-        }
-        d--;
+        printf("%d ",sort1[i]);
     }
+    printf("\n");
+}
+
+void swap2(int* a,int* b)
+{
+    int temp = 0;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+*/
+//선택정렬
+
+
+
+
+
+
+///////////배열 함수로 넘기기
+/*
+#include <iostream>
+using namespace std;
+
+void ArrayFunc(int* ptrArray);
+void ArrayFunc2(int* ptrArray, int arraySize);
+void ArrayFunc3(int array_[], int arraySize);
+
+int main()
+{
+    int numbers[10] = {0,};
+    for(int i = 0; i < 10; i++)
+    {
+        numbers[i] = (i+1)*10;
+    }
+
+    for(int i = 0; i<10; i++)
+    {
+        printf("%d ",numbers[i]);
+    }
+    printf("\n");
+
+    int *ptrNumber = &numbers[2];
+
+    printf("3번째 자리에 있는 값 + 1 -> %d \n", *(ptrNumber+1)); //40
+    printf("3번째 자리에 있는 값 + 1 -> %d \n", *ptrNumber+1); // 31
+
+    //{numbers와 numbers[0]의 주소는 같다.
+    printf("numbers 가 들고 있는 값 -> %p \n", numbers); 
+    printf("numbers[0]의 주소 값 -> %p \n", &numbers[0]);
+    //numbers와 numbers[0]의 주소는 같다.}
+
+    //ArrayFunc(numbers);
+    //ArrayFunc2(numbers, 10); //sizeof를 주면 안되고, 직접 배열 크기를 넣어줘야함.
+
+    ArrayFunc3(numbers, 10);
+}
+
+void ArrayFunc3(int array_[], int arraySize)
+{   
+    printf("함수에서 찍어 본 numbers의 size : %d \n", sizeof(array_));
+    for(int i = 0; i<arraySize; i++)
+    {
+        printf("array[%d]의 값 : %d \n",i, array_[i]);
+    }   
+}
+
+void ArrayFunc(int* ptrArray)
+{   
+    //배열을 역참조(포인터)로 받게되면 배열의 크기를 체크할 수 없다.
+    //다른 메모리를 덮어써버릴 수도있다.(배열의 크기를 넘어서는 값을 참조하게 되면)
+    //10
+    printf("ptrArray 역참조 값 : %d \n", *(ptrArray));
+    //100
+    printf("ptrArray + 1 주소의 역참조 값 : %d \n", *(ptrArray+9));
+    //357498393 (배열크기 10을 초과한 값, 어떤값이 있을지 알 수 없다.)
+    printf("ptrArray + 1 주소의 역참조 값 : %d \n", *(ptrArray+10));
+    //사이즈가 3이나 초과하여 역시나 어떤값이 있을지 알 수 없다.
+    printf("ptrArray + 1 주소의 역참조 값 : %d \n", *(ptrArray+12));
+
+}
+// 배열은 사이즈를 넘겨서 처리해줘야함.
+void ArrayFunc2(int* ptrArray, int arraySize)
+{   
+    for(int i = 0; i<arraySize; i++)
+    {
+        printf("ptrArray 역참조 값 : %d \n", *(ptrArray+i));
+    }   
 }
 */
 
-// 대문자 소문자 변환
-// void mission()
-// {
-//     char str[300];
-
-//     cin >> str;
-
-//     for(int i = 0; i < sizeof(str); i++)
-//     {
-//         int b;
-//         b = str[i];
-//         if(b >= 65 && b <= 90)
-//         {
-//             b = b+32;
-//             str[i] = b;
-//         }
-//         else if(b >= 97 && b <= 122)
-//         {
-//             b = b-32;
-//             str[i] = b;
-//         }
-//     }
-
-//     cout << str;
-    
-// }
-
-// [2]문자열 출력하기
-// void Description002()
-// {
-//     char str[300] = {0, };
-//     cout << "문자열을 입력하시오(200자 이내로) : ";
-//     cin >> str;
-
-//     printf("제대로 입력을 받았는지? -> %s \n", str);
-// }
-
-//[1]문자열 할당하기
-// void Description001()
-// {
-//      //문자열을 이런식으로 입력해줄 수 있다.
-//     char string_[15] = "Good morning!\n";
-
-//     //선언과 동시에 초기화 할당을 하면 사이즈를 입력안해도 된다.
-//     char string2[] = "Good morning! \n";
-    
-//     //
-//     int numbers[10] = {0, };
-
-//     printf("문자열 배열의 크기 %d\n", sizeof(string_));
-//     printf("문자열 배열의 크기 %d\n", sizeof(string2));
-//     printf("정수형 배열의 크기 %d\n", sizeof(numbers));
-//     printf("정수형 배열의 길기 %d\n", sizeof(numbers)/sizeof(int));
-
-//     string_[0] = 'g';
-//     string_[1] = 'g';
-//     string_[2] = 'g';
-//     printf("정수형 배열의 크기 %d\n", sizeof(numbers));
-
-//     bool isNullSameZero = false;
-//     if(0 == '\0')
-//     {
-//         isNullSameZero = true;
-//     }
-//     else
-//     {
-//         isNullSameZero = false;
-//     }
-//     printf("Null은 0과 같은 값인가? %d \n", isNullSameZero);
-//     //Null값이라는것이 
-
-//     char string3[3];
-//     string3[0] = 'H';
-//     string3[1] = 'i';
-//     string3[2] = '!';
-//     //string3[3] = '\0';
-
-//     char string4[4] = "Hi!";
-
-//     printf("이건 string3값 : %s \n", string3);
-//     printf("이건 string4값 : %s \n", string4);
-// }
