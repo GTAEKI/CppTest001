@@ -2,8 +2,128 @@
 
 int main()
 {
+    int arr[3][5] = {{1,2,3,4,5},{6,7,8,9,10},{11,12,13,14,15}};
+
     
+    for(int(*ptr)[5]=arr; ptr < arr+3; ptr++)
+    {
+        for(int *ptr2 = *ptr; ptr2 < *ptr+5; ptr2++ )
+        {
+            printf("%2d ",*ptr2);
+        }
+        printf("\n");
+    }
 }
+
+
+
+
+
+
+
+
+
+// 0캐릭터 옮기기 예제
+/*
+#include <iostream>
+using namespace std;
+
+void Desc002();
+void swap(int*a,int*b);
+
+int main()
+{
+    Desc002();
+}
+
+//다차원 배열
+void Desc002()
+{
+    char char2_[5][5] = //행[6], 열[5]
+    {
+        {1,2,3,4,5},
+        {1,2,3,4,5},
+        {1,2,3,4,5},
+        {1,2,3,4,5},
+        {1,2,3,4,5},
+    };
+
+    char userInput = '0';
+    
+
+    char* ptr = &char2_[2][2];
+
+    while(1)
+    {
+        for(int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++)
+            {   
+                char2_[y][x] = '*';
+            }
+        }
+
+        if(userInput == 'w'||userInput == 'W')
+        {
+            *(ptr-5) = '0';
+            ptr = (ptr-5);       
+        }
+        else if(userInput == 's'||userInput == 'S')
+        {
+            *(ptr+5) = '0';
+            ptr = (ptr+5);
+        }
+        else if(userInput == 'a'||userInput == 'A')
+        {
+            *(ptr-1) = '0';
+            ptr = (ptr-1);
+        }
+        else if(userInput == 'd'||userInput == 'D')
+        {
+            *(ptr+1) = '0';
+            ptr = (ptr+1);
+        }
+        else
+        {
+            *ptr = '0';
+            ptr = ptr;
+        }
+
+        userInput = '0';
+
+        // //출력부분
+        // for(int i = 0; i < 25; i++)
+        // {
+        //     printf("%c ", char_[i]);
+        //     if(i%5 == 4)
+        //     {
+        //         printf("\n");
+        //     }
+        // }
+
+        for(int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                printf("%c ", char2_[y][x]);
+            }
+            printf("\n");
+        }
+
+        printf("\n");
+
+        cin >> userInput;
+    }
+}
+
+void swap(int*a,int*b)
+{
+    int temp = 0;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+*/
 
 
 
