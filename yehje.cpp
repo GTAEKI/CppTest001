@@ -1,5 +1,69 @@
+#include<iostream>
+
+void rec(int n);
+
+
+int main()
+{
+	rec(1);
+}
+
+void rec(int n)
+{
+	printf("n = %d", n);
+	rec(n+1);
+}
+
+
+
+// #include <iostream>
+
+// void Desc003();
+
+// int main()
+// {
+//     Desc003();
+// }
+
+// // new 동적할당
+// void Desc003()
+// {
+//     /* //배열에 바로 상수를 입력받아서 배열크기를 정하는것은 안된다. 그래서 동적할당이 필요하다.
+//     int userInput = -1;
+//     printf("원하는 크기만큼 배열을 만들겠음. 크기를 입력하시오 : ");
+//     scanf("%d", &userInput);
+
+//     int numbers[userInput] = { 0, };
+//     int* numbers2 = new int[10];
+//     */
+
+//     int userInput = -1;
+//     printf("원하는 크기만큼 배열을 만들겠음. 크기를 입력하시오 : ");
+//     scanf("%d", &userInput);
+
+//     int numbers[10] = { 0, }; // 여기는 스택에 저장되는 부분이다.
+//     int* numbers2 = new int[userInput]; // 여기는 힙에 저장되는 부분이다.힙에 배열을 할당했다. 프로그램 종료시 해제를 해줘야함
+
+//     for(int i = 0; i < 10; i++)
+//     {
+//         numbers2[i] = i + 1;
+//     }
+
+//     for(int i = 0; i < 10; i++)
+//     {
+//         printf("i값 : %d \n", numbers2[i]);
+//     }
+//     printf("\n\n");
+
+//     delete[] numbers2; //프로그램 종료시 해제를 하는것.
+// }
+
+
+//혼자공부
+/*
 #include <iostream>
 
+//이중배열과 포인터
 int main()
 {
     int arr[3][5] = {{1,2,3,4,5},{6,7,8,9,10},{11,12,13,14,15}};
@@ -14,12 +78,7 @@ int main()
         printf("\n");
     }
 }
-
-
-
-
-
-
+*/
 
 
 
